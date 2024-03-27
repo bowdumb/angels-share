@@ -7,7 +7,7 @@ export default function SearchBar({ defaultValue = '' }) {
     const [searchQuery, setSearchQuery] = useState(defaultValue);
     const router = useRouter();
 
-    const handleSearchSubmit = aysnc (e) => {
+    const handleSearchSubmit = async (e) => {
         e.preventDefault();
         router.push(`http://localhost:3000/search?searchQuery=${encodeURIComponent(searchQuery.trim())}`);
     };
