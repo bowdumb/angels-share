@@ -9,10 +9,10 @@ export default function SearchBar({ defaultValue = '' }) {
 
     const handleSearchSubmit = async (e) => {
         e.preventDefault();
-        router.push({
-            pathname: '/search',
-            query: { searchQuery: searchQuery.trim() },
-        }, undefined, {shallow: true });
+
+        const path = `/search?searchQuery=${encodeURIComponent(searchQuery.trim())}`;
+        console.log(typeof path, path);
+        router.push(path);
     };
 
     return (

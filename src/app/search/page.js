@@ -1,34 +1,42 @@
+'use client';
+
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import SearchBar from '../components/searchBar';
+import SearchBar from '../components/searchBar'; // Adjust the import path as necessary
 
 export default function Search() {
-    const router = useRouter();
-    const { searchQuery } = router.query;
-    const [results, setResults] = useState([]);
+  const router = useRouter();
+  const [results, setResults] = useState([]);
 
-    useEffect(() => {
-        if (!searchQuery) return;
+  // Use optional chaining to safely access searchQuery
+  const searchQuery = router.query?.searchQuery;
 
-        const fetchResults = async () => {
-            const response = await fetch(`/api/search?query=${encodeURIComponent(searchQuery)}`);
-            const data = await response.json();
-            setResults(data);
-        };
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!searchQuery) return; // Exit early if searchQuery is undefined or empty
 
-        fetchResults();
-    }, [searchQuery]);
-    return (
-        <div>
-            This is the search page.
-            <SearchBar defaultValue={searchQuery} />
-            {results.length > 0 && (
-                <ul>
-                    {results.map((result, index) => (
-                        <li key={index}>{result.name}</li>
-                    ))}
-                </ul>
-            )}
-        </div>
-    );
+      // Perform the search using your API route
+      const response = await fetch(`/api/search?query=${encodeURIComponent(searchQuery)}`);
+      if (response.ok) {
+        const data = await response.json();
+        setResults(data); // Assuming the API returns an array of results
+      }
+    };
+
+    fetchData();
+  }, [searchQuery]); // Dependency array ensures useEffect runs when searchQuery changes
+
+  return (
+    <div>
+      <SearchBar defaultValue={searchQuery} />
+      <div>
+        {/* Render your search results here */}
+        {results.map(result => (
+          <div key={result.name}> {/* Replace result.id with appropriate key */}
+            {/* Render each result */}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
