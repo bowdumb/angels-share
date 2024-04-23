@@ -33,11 +33,15 @@ export default function Search() {
         {results.map(result => (
           <div key={result._id}>
             <h1>Name: {result.name}</h1>
-            <h1>Spirit: {result.spirit}</h1>
+            <h2>Ingredients:</h2>
+            <ol>
+              {result.ingredients.map((ingredient, index) => (
+                <li key={index}>{ingredient}</li>
+              ))}
+            </ol>
             <p>Instructions: {result.instructions}</p>
           </div>
         ))}
       </div>
     </div>
-  );
-}
+  )};
