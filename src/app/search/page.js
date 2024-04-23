@@ -32,8 +32,9 @@ export default function Search() {
       <div>
         {results.map(result => (
           <div key={result._id}>
-            <h3>{result.name}</h3>
-            <p>{result.instructions}</p>
+            <h1>Name: {result.name}</h1>
+            <h1>Spirit: {result.spirit}</h1>
+            <p>Instructions: {result.instructions}</p>
           </div>
         ))}
       </div>
