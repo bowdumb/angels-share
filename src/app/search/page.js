@@ -1,39 +1,39 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import SearchBar from '../components/searchBar'; // Adjust the import path as necessary
+import React from 'react';
+import SearchBar from '../components/SearchBar';
+import { useSearchParams } from 'next/navigation';
 
 export default function Search() {
-  const router = useRouter();
-  const [results, setResults] = useState([]);
+  const searchParams = useSearchParams();
+  const searchQuery = searchParams.get('query') || '';
 
-  // Use optional chaining to safely access searchQuery
-  const searchQuery = router.query?.searchQuery;
+  async function fetchSearchResults(query) {
+    const response = await fetch(`http://localhost:3000/api/search?query=${encodeURIComponent(query)}`, {
+      cache: 'no-store'
+    });
+    if (!response.ok) throw new Error('Failed to fetch data');
+    return response.json();
+  }
 
-  useEffect(() => {
-    const fetchData = async () => {
-      if (!searchQuery) return; // Exit early if searchQuery is undefined or empty
+  const [results, setResults] = React.useState([]);
 
-      // Perform the search using your API route
-      const response = await fetch(`/api/search?query=${encodeURIComponent(searchQuery)}`);
-      if (response.ok) {
-        const data = await response.json();
-        setResults(data); // Assuming the API returns an array of results
-      }
-    };
-
-    fetchData();
-  }, [searchQuery]); // Dependency array ensures useEffect runs when searchQuery changes
+  React.useEffect(() => {
+    if (searchQuery) {
+      fetchSearchResults(searchQuery)
+        .then(setResults)
+        .catch(error => console.error('Error fetching search results:', error));
+    }
+  }, [searchQuery]);
 
   return (
     <div>
       <SearchBar defaultValue={searchQuery} />
       <div>
-        {/* Render your search results here */}
         {results.map(result => (
-          <div key={result.name}> {/* Replace result.id with appropriate key */}
-            {/* Render each result */}
+          <div key={result._id}>
+            <h3>{result.name}</h3>
+            <p>{result.instructions}</p>
           </div>
         ))}
       </div>
