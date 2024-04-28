@@ -30,7 +30,7 @@ export default function SearchBar({ defaultValue = '' }) {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search for a cocktail..."
             />
-            <button type="submit">Search</button>
+            <button className="ml-5" type="submit" >Search</button>
         </form>
     );
 }
