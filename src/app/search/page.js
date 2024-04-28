@@ -21,7 +21,8 @@ export default function Search() {
   React.useEffect(() => {
     if (searchQuery) {
       fetchSearchResults(searchQuery)
-        .then(setResults)
+     
+   .then(setResults)
         .catch(error => console.error('Error fetching search results:', error));
     }
   }, [searchQuery]);
@@ -34,11 +35,11 @@ export default function Search() {
           <div key={result._id}>
             <h1 className="text-xl font-bold pt-10">{result.name}</h1>
             <h2 className="text-lg font-semibold mt-4">Ingredients:</h2>
-            <ol className="list-decimal pl-5">
+            <ul className="list-disc pl-5">
               {result.ingredients.map((ingredient, index) => (
                 <li key={index} className="ml-4">{ingredient}</li>
               ))}
-            </ol>
+            </ul>
             <h2 className="text-lg font-semibold mt-4">Glassware:</h2>
               <p className="pl-5">{result.glassware}</p>
             <h2 className="text-lg font-semibold mt-4">Instructions: </h2>
@@ -47,6 +48,12 @@ export default function Search() {
               <li key={index} className="ml-4">{instructions}</li>
             ))}
             </ol>
+            {result.optional && (
+              <>
+                <h2 className="text-lg font-semibold mt-4">Optional: </h2>
+                <p className="pl-5">{result.optional}</p>
+              </>
+            )}
           </div>
         ))}
       </div>
