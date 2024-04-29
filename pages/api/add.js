@@ -7,11 +7,10 @@ export default async function handler(req,res) {
     }
 
     try {
-        const { db } = await connectToDatabase();
-        const data = req.body;
+        const db = await connectToDatabase();
 
         const collection = db.collection('cocktails');
-        const result = await collection.insertOne(data);
+        const result = await collection.insertOne(req.body);
 
         res.status(201).json({ message:'Item added sucessfully', _id: result.insertedId});
     } catch (error) {

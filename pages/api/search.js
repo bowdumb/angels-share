@@ -11,7 +11,7 @@ export default async function handler(req, res) {
         }
 
     try {
-        const { db } = await connectToDatabase();
+        const db = await connectToDatabase();
         const collection = db.collection('cocktails');
         const results = await collection.find({
             name: { $regex: query, $options: 'i' },
