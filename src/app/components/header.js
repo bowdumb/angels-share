@@ -12,6 +12,9 @@ export default function Header() {
                     <Link href="/search">Search</Link>
                 </div>
                 <div className="text-white text-end underline hover:text-blue-300">
+                    <Link href="/add-recipe">Add Recipe</Link>
+                </div>
+                <div className="text-white text-end underline hover:text-blue-300">
                     <Link href="/about" >About</Link>
                 </div>
             </nav>
