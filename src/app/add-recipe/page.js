@@ -45,22 +45,22 @@ export default function addCocktailForm() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
             <label>
-                Name:
-                <input type="text" name="name" value={formData.name} onChange={handleChange} /> 
+                <span className="text-gray-700">Name:</span>
+                <input type="text" name="name" value={formData.name} onChange={handleChange} className="mt-1 p-2 border border-gray-300 rounded" /> 
             </label>
             <label>
-                Ingredients: 
-                <input type="text" name="ingredients" value={formData.ingredients} onChange={handleChange} />
+                <span className="text-gray-700">Ingredients:</span>
+                <input type="text" name="ingredients" value={formData.ingredients} onChange={handleChange} className="w-2/3 mt-1 p-2 border border-gray-300 rounded" />
             </label>
             <label>
-                Instructions:  
-                <input type="text" name="instructions" value={formData.instructions} onChange={handleChange} />
+                <span className="text-gray-700">Instructions:</span>
+                <input type="text" name="instructions" value={formData.instructions} onChange={handleChange} className="w-2/3 mt-1 p-2 border border-gray-300 rounded" />
             </label>
             <label>
-                Optional: 
-                <input type="text" name="optional" value={formData.optional} onChange={handleChange} />
+                <span className="text-gray-700">Optional:</span>
+                <input type="text" name="optional" value={formData.optional} onChange={handleChange} className="text-black w-2/3 mt-1 p-2 border border-gray-300 rounded" />
             </label>
             <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rouned">Add Recipe</button>
         </form>
