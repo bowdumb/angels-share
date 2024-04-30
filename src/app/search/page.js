@@ -3,6 +3,7 @@
 import React from 'react';
 import SearchBar from '../components/SearchBar';
 import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 
 export default function Search() {
   const searchParams = useSearchParams();
@@ -63,6 +64,9 @@ export default function Search() {
           ) : (   // This line contains the alternative outcome for the outer ternary operator above
             <div className="text-xl text-red-500 text-center mt-10">
               No results found for your search.
+            <div className="text-xl text-white text-center mt-10">
+            <Link href="/add-recipe">Click here to add a new recipe!</Link>
+            </div>
             </div>
           )
         ) : null}
