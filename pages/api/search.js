@@ -2,7 +2,7 @@ import { connectToDatabase } from "@/app/utils/mongodb";
 
 export default async function handler(req, res) {
     if (req.method !== 'GET') {
-        return res.status(405).json({ message: 'Only GET requests are allowed' });
+        return res.status(405).json({ message: 'Method is not allowed' });
     }
 
     const { query } = req.query;
