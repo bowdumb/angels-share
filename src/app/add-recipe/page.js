@@ -46,23 +46,31 @@ export default function addCocktailForm() {
 
     return (
         <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
-            <label className="flex flex-col">
-                <span className="text-white">Name: </span>
-                <input type="text" name="name" value={formData.name} onChange={handleChange} className="mt-1 p-2 border border-gray-300 rounded bg-gray-800 text-white" /> 
-            </label>
-            <label className="flex flex-col">
-                <span className="text-white">Ingredients: </span>
-                <input type="text" name="ingredients" value={formData.ingredients} onChange={handleChange} className="text-white w-2/3 mt-1 p-2 border border-gray-300 rounded bg-gray-800" />
-            </label>
-            <label className="flex flex-col">
-                <span className="text-white">Instructions: </span>
-                <input type="text" name="instructions" value={formData.instructions} onChange={handleChange} className="text-white w-2/3 mt-1 p-2 border border-gray-300 rounded bg-gray-800" />
-            </label>
-            <label className="flex flex-col">
-                <span className="text-white">Optional: </span>
-                <input type="text" name="optional" value={formData.optional} onChange={handleChange} className="text-white w-2/3 mt-1 p-2 border border-gray-300 rounded bg-gray-800" />
-            </label>
-            <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add Recipe</button>
+            <div className="flex items-center">
+                <label className="w-32">
+                    Name:
+                </label>
+                <input type="text" name="name" value={formData.name} onChange={handleChange} className="flex-1 mt-1 p-2 border border-gray-300 rounded bg-gray-800 text-white" />
+            </div>
+            <div className="flex items-center">
+                <label className="w-32 min-w-[100px]">
+                    Ingredients:
+                </label>
+                <input type="text" name="ingredients" value={formData.ingredients} onChange={handleChange} className="flex-1 mt-1 p-2 border border-gray-300 rounded bg-gray-800 text-white" />
+            </div>
+            <div className="flex items-center">
+                <label className="w-32">
+                    Instructions:
+                </label>
+                <input type="text" name="instructions" value={formData.instructions} onChange={handleChange} className="flex-1 mt-1 p-2 border border-gray-300 rounded bg-gray-800 text-white" />
+            </div>
+            <div className="flex items-center">
+                <label className="w-32">
+                    Optional:
+                </label>
+                <input type="text" name="optional" value={formData.optional} onChange={handleChange} className="flex-1 mt-1 p-2 border border-gray-300 rounded bg-gray-800 text-white" />
+            </div>
+            <button type="submit" className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add Recipe</button>
         </form>
-    );    
+    );       
 }
