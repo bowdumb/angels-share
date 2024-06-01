@@ -9,6 +9,9 @@ export default function Header() {
             </div>
             <nav className="flex space-x-12 mt-12 pt-7">
                 <div className="text-white text-end underline hover:text-blue-300">
+                    <Link href="/">Home</Link>
+                </div>
+                <div className="text-white text-end underline hover:text-blue-300">
                     <Link href="/search">Search</Link>
                 </div>
                 <div className="text-white text-end underline hover:text-blue-300">
