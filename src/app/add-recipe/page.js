@@ -70,7 +70,7 @@ export default function addCocktailForm() {
                 </label>
                 <input type="text" name="optional" value={formData.optional} onChange={handleChange} className="flex-1 mt-1 p-2 border border-gray-300 rounded bg-gray-800 text-white" />
             </div>
-            <button type="submit" className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add Recipe</button>
+            <button type="submit" className="w-48 mx-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add Recipe</button>
         </form>
     );       
 }
