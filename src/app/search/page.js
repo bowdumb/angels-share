@@ -64,7 +64,7 @@ export default function Search() {
           ) : (   // This line contains the alternative outcome for the outer ternary operator above
             <div className="text-xl text-red-500 text-center mt-10">
               No results found for your search.
-            <div className="text-xl text-white text-center mt-10">
+            <div className="text-xl text-slate-600 border border-black-500 hover:bg-black-500 hover:text-teal-400 font-bold text-center mt-10">
             <Link href="/add-recipe">Click here to add a new recipe!</Link>
             </div>
             </div>
